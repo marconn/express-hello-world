@@ -1,8 +1,13 @@
 const express = require("express");
+var cors = require('cors')
 const app = express();
 const port = process.env.PORT || 3001;
 
-app.use(express.json())
+app.use(express.json(), cors(
+    {
+        origin: 'https://stackblitz.com'
+    }
+))
 
 app.post("/", async function(req, res) {
     let number = getRandom(1, 11);
